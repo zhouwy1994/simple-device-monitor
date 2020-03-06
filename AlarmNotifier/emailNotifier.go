@@ -14,6 +14,15 @@ type EmailNotifier struct {
 	SendTo []string // 报警信息发送地址
 }
 
+func NewEmailNotifier(user, pass, host string, port int, sendTo []string) *EmailNotifier {
+	return &EmailNotifier{
+		User:user,
+		Pass:pass,
+		Host:host,
+		Port:port,
+		SendTo:sendTo,
+	}
+}
 func (e *EmailNotifier) Notify(modName, modNormalStatus, modCurrentStatus, otherMessage , status string) error {
 	m := gomail.NewMessage()
 	m.SetHeader("From","Zhouwy" + "<" + e.User + ">")

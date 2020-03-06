@@ -62,19 +62,14 @@ func checkStatus(md ms.ModuleStatus,
 }
 
 func main() {
-	enr := af.EmailNotifier{
-		User:"xxxx@aliyun.com",
-		Pass:"password",
-		Host:"smtp.aliyun.com",
-		Port:25,
-		SendTo:[]string{"xxxx@foxmail.com"},
-	}
+	enr := af.NewEmailNotifier("xxxx@aliyun.com", "password",
+		"smtp.aliyun.com",25, []string{"xxxx@foxmail.com"})
 
 	mds := []ms.ModuleStatus{&ms.TempModule{},&ms.CpuModule{}}
 
 	stopFuncs := make([]func(), 0)
 	for _,md := range mds {
-		sf := newTickerFunc(md.CheckInterval(), md, mds, &enr)
+		sf := newTickerFunc(md.CheckInterval(), md, mds, enr)
 		stopFuncs = append(stopFuncs, sf)
 	}
 
