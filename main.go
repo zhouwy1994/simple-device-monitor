@@ -62,10 +62,10 @@ func checkStatus(md ms.ModuleStatus,
 }
 
 func main() {
-	enr := af.NewEmailNotifier("xxxx@aliyun.com", "password",
-		"smtp.aliyun.com",25, []string{"xxxx@foxmail.com"})
+	enr := af.NewEmailNotifier("xxx@aliyun.com", "xxx",
+		"smtp.aliyun.com",25, []string{"xxx@foxmail.com"})
 
-	mds := []ms.ModuleStatus{&ms.TempModule{},&ms.CpuModule{}}
+	mds := []ms.ModuleStatus{&ms.EOSPrice{}}
 
 	stopFuncs := make([]func(), 0)
 	for _,md := range mds {
