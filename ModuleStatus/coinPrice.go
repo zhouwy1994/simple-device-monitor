@@ -32,8 +32,11 @@ func (m *CoinPrice) CurrentStatus() (string, error) {
 	defer resp.Body.Close()
 	js,_ := simplejson.NewFromReader(resp.Body)
 	arr,_ := js.Get("data").Array()
-	mp := arr[0].(map[string]interface{})
+	if len(arr) < 1 {
+		return "0",nil
+	}
 
+	mp := arr[0].(map[string]interface{})
 	return fmt.Sprintf("%s", mp["priceUsd"].(string)),nil
 }
 
