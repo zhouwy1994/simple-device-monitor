@@ -12,7 +12,7 @@ type CoinPrice struct {
 }
 
 func (m *CoinPrice) ModuleName() string {
-	return "CPU使用率"
+	return "自选币价格"
 }
 
 func (m *CoinPrice) CheckInterval() time.Duration {
