@@ -65,7 +65,7 @@ func main() {
 	enr := af.NewEmailNotifier("xxx@aliyun.com", "xxx",
 		"smtp.aliyun.com",25, []string{"xxx@foxmail.com"})
 
-	mds := []ms.ModuleStatus{&ms.EOSPrice{}}
+	mds := []ms.ModuleStatus{&ms.CoinPrice{CoinName:"eos"}, &ms.CoinPrice{CoinName:"xrp"}}
 
 	stopFuncs := make([]func(), 0)
 	for _,md := range mds {
